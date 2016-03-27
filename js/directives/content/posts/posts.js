@@ -3,21 +3,10 @@ app.directive('fireioPosts', function() {
         restrict: 'E',
         scope: { html: '@' },
         templateUrl: 'templates/directives/content/posts/posts.html',
-        controller: function($scope, $state, $stateParams, PostsFactory, toaster) {
-            if($stateParams.page == undefined)
-                $stateParams.page = 0;
-
-            PostsFactory.getPosts($stateParams.page, function(err, posts) {
-                console.log(posts);
-                if(err) return toaster.pop({
-                    type: 'error',
-                    title: 'Error',
-                    body: 'Failed to grab posts from firebase',
-                    timeout: 4000
-                });
-
-                $scope.posts = posts;
-            });
+        controller: function($scope, $firebaseArray) {
+            var scrollRef = new Firebase.util.Scroll(new Firebase(config.fb + '/content/posts'), 'timestamp');
+            $scope.posts = $firebaseArray(scrollRef);
+            $scope.posts.scroll = scrollRef.scroll;
         }
     }
 });

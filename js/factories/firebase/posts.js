@@ -26,14 +26,6 @@ app.factory('PostsFactory', function($firebaseObject, $firebaseArray) {
                 fn(err);
             })
         },
-        getPosts: function(page, fn) {
-            var postsStart = page * config.posts.loadPerPage;
-            var posts = $firebaseArray(new Firebase(config.fb + '/content/posts').orderByChild('created').limitToLast(config.posts.loadPerPage).endAt(9999999999999999)).$loaded().then(function(posts) {
-                fn(null, posts.reverse());
-            }).catch(function(err) {
-                fn(err);
-            });
-        },
         getPost: function(id, fn) {
             var post = $firebaseObject(new Firebase(config.fb + '/content/posts/' + id));
             post.$loaded().then(function() {
@@ -45,7 +37,7 @@ app.factory('PostsFactory', function($firebaseObject, $firebaseArray) {
         },
         deletePost: function(id, fn) {
             $firebaseObject(new Firebase(config.fb + '/content/posts/' + id)).$remove().then(function() {
-                fn(null);
+                fn();
             }).catch(function(err) {
                 fn(err);
             });

@@ -1,13 +1,15 @@
-<div ng-repeat="post in posts" class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <div class="panel panel-default">
-            <div class="panel-heading">{{ post.title }} @ {{ post.created | date : 'medium' }}</div>
-            <div class="panel-body">
-                {{ post.description }}
-                <br>
-                <a href="#/post/{{ post.$id }}">
-                    Click me to view post
-                </a>
+<div infinite-scroll="posts.scroll.next(10)" infinite-scroll-distance="1"class="row">
+    <div ng-repeat="post in posts">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ post.title }} || {{ post.created | date : 'medium' }}</div>
+                <div class="panel-body">
+                    {{ post.description }}
+                    <br>
+                    <a href="#/post/{{ post.$id }}">
+                        Click me to view post
+                    </a>
+                </div>
             </div>
         </div>
     </div>

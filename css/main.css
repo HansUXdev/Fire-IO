@@ -38,3 +38,8 @@
     padding-bottom: 12px;
   }
 }
+
+/* Hack to make editor height bigger */
+.ng-pristine[contenteditable="true"] {
+    height: 50% !important;
+}

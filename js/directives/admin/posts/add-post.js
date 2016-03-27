@@ -1,8 +1,8 @@
-app.directive('fireioNewPost', function() {
+app.directive('fireioAddPost', function() {
     return {
         restrict: 'E',
         scope: { html: '@' },
-        templateUrl: 'templates/directives/admin/posts/new-post.html',
+        templateUrl: 'templates/directives/admin/posts/add-post.html',
         controller: function($scope, PostsFactory, toaster) {
             $scope.create = function() {
                 if($scope.post.title == undefined || $scope.post.description == undefined || $scope.post.body == undefined) return toaster.pop({
@@ -16,6 +16,7 @@ app.directive('fireioNewPost', function() {
                     title: $scope.post.title,
                     created: Date.now(),
                     updated: Date.now(),
+                    timestamp: -Date.now(),
                     description: $scope.post.description,
                     body: $scope.post.body
                 }, function(err) {

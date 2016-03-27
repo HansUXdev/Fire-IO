@@ -1,11 +1,11 @@
-app.directive('fireioMyPosts', function() {
+app.directive('fireioMyPages', function() {
     return {
         restrict: 'E',
         scope: { html: '@' },
-        templateUrl: 'templates/directives/admin/posts/my-posts.html',
-        controller: function($scope, PostsFactory, $firebaseArray, toaster) {
+        templateUrl: 'templates/directives/admin/pages/my-pages.html',
+        controller: function($scope, PagesFactory, $firebaseArray, toaster) {
             $scope.delete = function($index) {
-                PostsFactory.deletePost($scope.posts[$index].$id, function(err) {
+                PagesFactory.deletePage($scope.pages[$index].$id, function(err) {
                     if(err) return toaster.pop({
                         type: 'error',
                         title: 'Error',
@@ -16,14 +16,14 @@ app.directive('fireioMyPosts', function() {
                     toaster.pop({
                         type: 'success',
                         title: 'Success',
-                        body: 'Post has been deleted',
+                        body: 'Page has been deleted',
                         timeout: 3000
                     });
-                })
+                });
             };
 
-            var scrollRef = new Firebase.util.Scroll(new Firebase(config.fb + '/content/posts'), 'timestamp');
-            $scope.posts = $firebaseArray(scrollRef);
+            var scrollRef = new Firebase.util.Scroll(new Firebase(config.fb + '/content/pages'), 'timestamp');
+            $scope.pages = $firebaseArray(scrollRef);
             $scope.scroll = scrollRef.scroll;
         }
     }

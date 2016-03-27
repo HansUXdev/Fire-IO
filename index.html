@@ -10,6 +10,10 @@
         <!-- Main styling -->
         <link rel="stylesheet" href="css/main.css">
 
+        <!-- Bootstrap / JQuery -->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
         <!-- AngularJS -->
         <script src="bower_components/angular/angular.min.js"></script>
 
@@ -25,6 +29,13 @@
         <!-- AngularFire -->
         <script src="bower_components/firebase/firebase.js"></script>
         <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+
+        <!-- ngInfiniteScroll -->
+        <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
+
+        <!-- Firebase Utils -->
+        <script src="bower_components/firebase-util/dist/firebase-util.min.js"></script>
+        <script src="bower_components/firebase-util/dist/firebase-util-paginate.min.js" ></script>
 
         <!-- textAngular -->
         <link rel="stylesheet" href="bower_components/textAngular/dist/textAngular.css">
@@ -50,6 +61,7 @@
         <!-- factories -->
             <!-- firebase -->
             <script src="js/factories/firebase/posts.js"></script>
+            <script src="js/factories/firebase/pages.js"></script>
 
         <!-- directives -->
             <!-- content -->
@@ -59,15 +71,20 @@
                 <!-- posts -->
                 <script src="js/directives/content/posts/post.js"></script>
                 <script src="js/directives/content/posts/posts.js"></script>
+                <!-- pages -->
+                <script src="js/directives/content/pages/404.js"></script>
 
 
             <!-- admin -->
                 <!-- navigation -->
                 <script src="js/directives/admin/navigation/side-nav.js"></script>
                 <!-- posts -->
-                <script src="js/directives/admin/posts/new-post.js"></script>
+                <script src="js/directives/admin/posts/add-post.js"></script>
                 <script src="js/directives/admin/posts/edit-post.js"></script>
                 <script src="js/directives/admin/posts/my-posts.js"></script>
+                <!-- pages -->
+                <script src="js/directives/admin/pages/add-page.js"></script>
+                <script src="js/directives/admin/pages/my-pages.js"></script>
     </head>
     <body ng-controller="MainController">
 
@@ -81,7 +98,5 @@
 
         <div ui-view></div>
 
-        <script src="bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     </body>
 </html>

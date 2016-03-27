@@ -1,5 +1,5 @@
 # Fire IO
-AngularJS / Firebase CMS that can be hosted in a static environment [demo](http://stackoverload.me/demos/fire-io/index.html)
+AngularJS / Firebase CMS that can be hosted in a static environment [demo](http://stackoverload.me/demos/fire-io/index.html#/posts)
 
 Admin [login](http://stackoverload.me/demos/fire-io/index.html#/login):
 
