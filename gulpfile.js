@@ -1,4 +1,5 @@
-var gulp = require('gulp');
+var $        	= require('gulp-load-plugins')();
+var gulp 	 	= require('gulp');
 var browserSync = require('browser-sync').create();
 
 var config = {
@@ -27,6 +28,32 @@ var config = {
 		]
 	}
 }
+
+
+var directives = {
+  firebase: [
+    'templates/directives/**/**/*.html',
+  ],
+}
+
+// Compiles the directive partials into a single JavaScript file
+// Generates AngularJS modules, which pre-load your HTML code into the $templateCache. 
+// This way AngularJS doesn't need to request the actual HTML files anymore.
+gulp.task('directives', function(cb) {
+  gulp.src(directives.firebase)
+    .pipe($.ngHtml2js({
+      prefix: 'components/',
+      moduleName: 'FireIO',
+      declareModule: false
+    }))
+    .pipe($.uglify())
+    .pipe($.concat('FireIO-templates.js'))
+    .pipe(gulp.dest('./js'))
+  ;
+
+  cb();
+});
+
 
 // Static server
 gulp.task('default', function() {
